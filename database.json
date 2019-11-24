@@ -1,6 +1,11 @@
 [
    {
       "content": "<h1>This is a test image</h1>\nTest image from http://placehold.it/400x300",
+      "image": "./images/img16.jpg",
+      "title": "Test image"
+   },
+   {
+      "content": "<h1>This is a test image</h1>\nTest image from http://placehold.it/400x300",
       "image": "./images/img02.jpg",
       "title": "Test image"
    },
@@ -77,11 +82,6 @@
    {
       "content": "<h1>This is a test image</h1>\nTest image from http://placehold.it/400x300",
       "image": "./images/img18.jpg",
-      "title": "Test image"
-   },
-   {
-      "content": "<h1>This is a test image</h1>\nTest image from http://placehold.it/400x300",
-      "image": "./images/img16.jpg",
       "title": "Test image"
    }
 ]
