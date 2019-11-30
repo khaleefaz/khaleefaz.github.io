@@ -1,38 +1,69 @@
 const gallery = document.querySelector('#gallery');
+const single  = document.querySelector('#page_container');
 
-/*
-function loadJSON(callback) {   
-  var xobj = new XMLHttpRequest();
-  xobj.overrideMimeType("application/json");
-  xobj.open('GET', './database.json', true);
-  xobj.onreadystatechange = function () {
-    if (xobj.readyState == 4 && xobj.status == "200") {
-      callback(JSON.parse(xobj.responseText));
-    }
-  };
-  xobj.send(null);  
+const urlAllImg= "https://script.google.com/macros/s/AKfycbxbq55KNvvg64TZRjfQOqLEp-q-5iyZL53PuedR29Jkdimjk0vH/exec"
+
+var allData = null;
+
+function singleImg(item){
+	return `
+	 	<div class="card">
+ 				<img class="img-fluid" src="${item.url}" alt="${item.name}">
+				<div class="card">
+					<i class="fas fa-heart" style="font-size:30px;color:#ff0000"></i>
+				</div>
+ 		</div>
+	`
 }
- 
- loadJSON(function(json) {
- 	var content = json.map((item) => {
-    return `<div class="col-lg-3 col-md-4 col-xs-6">
-          <a href="${item.image}" class="d-block mb-4 h-100">
-            <img class="img-fluid img-thumbnail" src="${item.image}" alt="${item.title}">
-          </a>
-        </div>`;
-}).join('');
-  gallery.innerHTML = content
-});
 
-//gallery.innerHTML = 'Hello'
+function OneImg(item){
+	return `
+	 	<div class="col-lg-3 col-md-4 col-xs-6">
+ 			<a href="#${item.id}" class="d-block mb-4 h-100" >
+ 				<img class="img-fluid img-thumbnail" src="${item.url}" alt="${item.name}">
+ 			</a>
+ 		</div>
+	`
+}
 
-*/
+function Routing() {
+  if(location.hash != '') {
+  	var hashed = location.hash;
+  	var Id = hashed.replace('#', '')
+  	if(allData == null) {
+  	getSingle(Id);
+  	} else {
+  		allData.forEach((item) => {
+  			if(item.id == Id) {
+ 				var op = singleImg(item);
+ 				 single.innerHTML = op;
+  			}
+ 		});
+  	}
+  } 
+  else {
+  	if(allData == null) {
+  	getData(urlAllImg);
+  	} else {
+			let output = "";
 
-const url = "https://script.google.com/macros/s/AKfycbxbq55KNvvg64TZRjfQOqLEp-q-5iyZL53PuedR29Jkdimjk0vH/exec"
+ 			allData.forEach((item) => {
+ 				output +=OneImg(item);
+ 			});
+
+ 			gallery.innerHTML = output;
+  	}
+  }
+  
+}
+
+window.onhashchange = Routing;
+
+Routing();
 
 
 // Get data from json api
- function getData(e){
+ function getData(url){
  	const xhr = new XMLHttpRequest();
  	console.log("Clicked");
 
@@ -41,17 +72,12 @@ const url = "https://script.google.com/macros/s/AKfycbxbq55KNvvg64TZRjfQOqLEp-q-
  	xhr.onload = function(){
  		if(this.status === 200){
  			const res = JSON.parse(this.responseText);
+ 			allData = res;
 
  			let output = "";
 
  			res.forEach((item) => {
- 				output += `
- 							<div class="col-lg-3 col-md-4 col-xs-6">
- 							<a href="${item.url}" class="d-block mb-4 h-100" target="_blank">
- 							<img class="img-fluid img-thumbnail" src="${item.url}" alt="${item.name}">
- 							</a>
- 							</div>
- 				 		`
+ 				output += OneImg(item);
  			});
 
  			gallery.innerHTML = output;
@@ -66,4 +92,29 @@ const url = "https://script.google.com/macros/s/AKfycbxbq55KNvvg64TZRjfQOqLEp-q-
  	e.preventDefault();
  }
  
- getData()
+ // Get data from json api
+ function getSingle(id){
+ 	const url = "https://script.google.com/macros/s/AKfycbwpkB4Z8jZbKDx4EOazOJm6vVlrMHdDHnhedCF1xvpugPq397QF/exec?id=" + id;
+ 	const xhr = new XMLHttpRequest();
+
+ 	xhr.open("GET", url, true);
+
+ 	xhr.onload = function(){
+ 		if(this.status === 200){
+ 			const res = JSON.parse(this.responseText);
+
+ 			let output = "";
+
+ 				output = singleImg(res);
+
+ 			gallery.innerHTML = output;
+ 		}
+ 		else{
+ 			single.innerHTML = `<li>Something went wrong</li>`
+ 		}
+ 	}
+
+ 	xhr.send();
+
+ 	e.preventDefault();
+ }

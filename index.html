@@ -10,20 +10,24 @@
     <meta name="theme-color" content="#292b2c" />
     <meta property="og:site_name" content="Khaleefaz ⚔️"/>
     <meta property="og:title" content="Khaleefaz ⚔️" />
-        <meta property="og:description" content="Khaleefaz 2k18-21 Photo gallery" />
-        <meta property="og:image" content="https://khaleefaz.github.io/thumbnail.png" />
-        <meta property="og:type" content="gallery" />
-        <meta property="og:url" content="https://khaleefaz.github.io" />
+    <meta property="og:description" content="Khaleefaz 2k18-21 Photo gallery" />
+    <meta property="og:image" content="https://khaleefaz.github.io/thumbnail.png" />
+    <meta property="og:type" content="gallery" />
+    <meta property="og:url" content="https://khaleefaz.github.io" />
     <link rel="manifest" href="/site.webmanifest">
 
     <title>Khaleefaz ⚔️ Gallery 2020</title>
     
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Fontawesom link -->
+ <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+ <script src="https://kit.fontawesome.com/b057e05b37.js" crossorigin="anonymous"></script>
 
     <!-- Custom styles for this template -->
     <link href="css/thumbnail-gallery.css" rel="stylesheet">
@@ -61,14 +65,13 @@
 
 <br>
     <!-- Page Content -->
-    <div class="container">
+    <div class="container" id="page_container">
 
       <div class="row text-center text-lg-left" id="gallery">
-
         <div class="col-lg-3 col-md-4 col-xs-6">
-        
             <img class="img-fluid img-thumbnail" src="http://placehold.it/600x300" alt="">
         </div>
+        
         <div id="loadingDiv">
         <div>
         <h7 class="text-light">Please wait...</h7>
@@ -78,9 +81,6 @@
 
     </div>
     <!-- /.container -->
-    
-    <img id="viewer" src="" width="800px"/>
-	<div id="info"> </div>
 
 
     <!-- Footer -->
@@ -95,8 +95,10 @@
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-    <!-- Main JavaScript -->
+    <!-- Main JavaScript  -->
     <script src="./main.js"></script>
+    
+    <script type="module" src="/app.js"></script>
   </body>
 
 </html>
