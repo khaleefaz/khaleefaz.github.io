@@ -9,8 +9,10 @@ function singleImg(item){
 	return `
 	 	<div class="card">
  				<img class="img-fluid" src="${item.url}" alt="${item.name}">
-				<div class="card">
+				<div class="" style="padding:5px;">
 					<i class="fas fa-heart" style="font-size:30px;color:#ff0000"></i>
+					<i class="far fa-comment" style="font-size:30px;color:#000000"></i>
+					<i class="far fa-paper-plane" style="font-size:30px;color:#000000"></i>
 				</div>
  		</div>
 	`
@@ -18,11 +20,13 @@ function singleImg(item){
 
 function OneImg(item){
 	return `
+	<div class="row text-center text-lg-left">
 	 	<div class="col-lg-3 col-md-4 col-xs-6">
  			<a href="#${item.id}" class="d-block mb-4 h-100" >
  				<img class="img-fluid img-thumbnail" src="${item.url}" alt="${item.name}">
  			</a>
  		</div>
+</div>
 	`
 }
 
@@ -51,7 +55,7 @@ function Routing() {
  				output +=OneImg(item);
  			});
 
- 			gallery.innerHTML = output;
+ 			single.innerHTML = output;
   	}
   }
   
@@ -80,10 +84,10 @@ Routing();
  				output += OneImg(item);
  			});
 
- 			gallery.innerHTML = output;
+ 			single.innerHTML = output;
  		}
  		else{
- 			gallery.innerHTML = `<li>Something went wrong</li>`
+ 			single.innerHTML = `<li>Something went wrong</li>`
  		}
  	}
 
@@ -107,7 +111,7 @@ Routing();
 
  				output = singleImg(res);
 
- 			gallery.innerHTML = output;
+ 			single.innerHTML = output;
  		}
  		else{
  			single.innerHTML = `<li>Something went wrong</li>`
