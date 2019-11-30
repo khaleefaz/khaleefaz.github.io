@@ -6,15 +6,31 @@ const urlAllImg= "https://script.google.com/macros/s/AKfycbxbq55KNvvg64TZRjfQOqL
 var allData = null;
 
 function singleImg(item){
+	var desc = item.description;
 	return `
 	 	<div class="card">
  				<img class="img-fluid" src="${item.url}" alt="${item.name}">
-				<div class="" style="padding:5px;">
-					<i class="fas fa-heart" style="font-size:30px;color:#ff0000"></i>
-					<i class="far fa-comment" style="font-size:30px;color:#000000"></i>
-					<i class="far fa-paper-plane" style="font-size:30px;color:#000000"></i>
+				<div class="row text-center text-lg-left" style="padding:5px;">
+					<div class="col-4">
+						<i class="fas fa-heart" style="font-size:30px;color:#ff0000">${desc.like}</i>
+					</div>
+					<div class="col-4 ">
+						<i class="far fa-comment" style="font-size:30px;color:#000000"></i>
+					</div>
+					<div class="col-4 ">
+						<i class="far fa-paper-plane" style="font-size:30px;color:#000000"></i>
+					</div>
 				</div>
  		</div>
+		<br />
+		<div>
+			${desc.description}
+		</div>
+		<br />
+		<div>
+			<button type="button" class="btn btn-dark">Download</button>
+		</div>
+		<br />
 	`
 }
 
