@@ -1324,10 +1324,6 @@
 			}
 
 		#wrapper:before {
-			-moz-animation: spinner 1s infinite linear !important;
-			-webkit-animation: spinner 1s infinite linear !important;
-			-ms-animation: spinner 1s infinite linear !important;
-			animation: spinner 1s infinite linear !important;
 			-moz-pointer-events: none;
 			-webkit-pointer-events: none;
 			-ms-pointer-events: none;
@@ -1343,8 +1339,6 @@
 			content: '';
 			display: block;
 			font-size: 2em;
-			height: 2em;
-			left: 50%;
 			line-height: 2em;
 			margin: -1em 0 0 -1em;
 			opacity: 0;
