@@ -1,100 +1,130 @@
-<!DOCTYPE html>
-<html lang="en">
+---
+layout: default
+---
 
-  <head>
+<!-- Wrapper -->
+<div id="wrapper">
 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="Mohammed Ashad">
-    <meta name="theme-color" content="#292b2c" />
-    <meta property="og:site_name" content="Khaleefaz ⚔️"/>
-    <meta property="og:title" content="Khaleefaz ⚔️" />
-    <meta property="og:description" content="Khaleefaz 2k18-21 Photo gallery" />
-    <meta property="og:image" content="https://khaleefaz.github.io/thumbnail.png" />
-    <meta property="og:type" content="gallery" />
-    <meta property="og:url" content="https://khaleefaz.github.io" />
-    <link rel="manifest" href="/site.webmanifest">
+    <!-- Header -->
+    <header id="header">
+        <h1><a href="index.html"><strong>{{ site.header.title }}</strong> {{ site.header.subtitle }}</a></h1>
+        <nav>
+            <ul>
+                <li><a href="#footer" class="icon fa-info-circle">About</a></li>
+            </ul>
+        </nav>
+    </header>
 
-    <title>Khaleefaz ⚔️ Gallery 2020</title>
-    
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-
-    <!-- Bootstrap core CSS -->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    
-    <!-- Fontawesom link -->
- <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
- <script src="https://kit.fontawesome.com/b057e05b37.js" crossorigin="anonymous"></script>
-
-    <!-- Custom styles for this template -->
-    <link href="css/thumbnail-gallery.css" rel="stylesheet">
-
-  </head>
-
-  <body>
-
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-      <div class="container">
-        <a class="navbar-brand" href="#">
-        	<img src="./logo.svg" height="30" alt="">
-</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="#">Home
-                <span class="sr-only">(current)</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">About</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Contact</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-
-<br>
-    <!-- Page Content -->
-    <div class="container" id="page_container">
-
-
-        
-        <div id="loadingDiv">
-        	<div>
-        		<h7 class="text-light">Please wait...</h7>
-        	</div>
-        </div>
-
+    <!-- Main -->
+    <div id="main">
+        {% for image in site.static_files %}
+        {% if image.path contains 'fulls' %}
+        <article class="thumb">
+            <a href="{{ site.baseurl }}{{ site.image_fulls_loc }}/{{ image.name }}" class="image">
+                <img src="{{ site.baseurl }}{{ site.image_thumbs_loc }}/{{ image.name }}" alt=""
+                     data-name="{{ image.name }}"/></a>
+            <!--<h2></h2>
+            <p></p>-->
+        </article>
+        {% endif %}
+        {% endfor %}
     </div>
-    <!-- /.container -->
-
 
     <!-- Footer -->
-    <footer class="py-5 bg-dark">
-      <div class="container">
-        <p class="m-0 text-center text-white">Copyright &copy;  <a href="https://e-labinnovations.web.app">e-lab innovations </a> 2020</p>
-      </div>
-      <!-- /.container -->
+    <footer id="footer" class="panel">
+        <div class="inner split">
+            <div>
+                <section>
+                    <h2>{{ site.footer.name }}</h2>
+                    <p>{{ site.footer.bio }}</p>
+                    <p>{{ site.footer.github }}</p>
+                </section>
+                <section>
+                    <h2>Sponsor</h2>
+                    <div class="ad">
+                        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                        <ins class="adsbygoogle"
+                             style="display:block; text-align:center;"
+                             data-ad-layout="in-article"
+                             data-ad-format="fluid"
+                             data-ad-client="ca-pub-1702577941194110"
+                             data-ad-slot="9823584598"></ins>
+                        <script>
+                            (adsbygoogle = window.adsbygoogle || []).push({});
+                        </script>
+                    </div>
+                </section>
+                <section>
+                    <h2>Follow me on ...</h2>
+                    <ul class="icons">
+                        {% if site.social_urls.facebook %}
+                            <li>
+                                <a href="{{ site.social_urls.facebook }}" class="icon fa-facebook">
+                                    <span class="label">Facebook</span>
+                                </a>
+                            </li>
+                        {% endif %}
+                        {% if site.social_urls.twitter %}
+                            <li>
+                                <a href="{{ site.social_urls.twitter }}" class="icon fa-twitter">
+                                    <span class="label">Twitter</span>
+                                </a>
+                            </li>
+                        {% endif %}
+                        {% if site.social_urls.instagram %}
+                            <li>
+                                <a href="{{ site.social_urls.instagram }}" class="icon fa-instagram">
+                                    <span class="label">Instagram</span>
+                                </a>
+                            </li>
+                        {% endif %}
+                        {% if site.social_urls.dribbble %}
+                            <li>
+                                <a href="{{ site.social_urls.dribbble }}" class="icon fa-dribbble">
+                                    <span class="label">Dribbble</span>
+                                </a>
+                            </li>
+                        {% endif %}
+                        {% if site.social_urls.github %}
+                            <li>
+                                <a href="{{ site.social_urls.github }}" class="icon fa-github">
+                                    <span class="label">GitHub</span>
+                                </a>
+                            </li>
+                        {% endif %}
+                        {% if site.social_urls.linkedin %}
+                            <li>
+                                <a href="{{ site.social_urls.linkedin }}" class="icon fa-linkedin">
+                                    <span class="label">LinkedIn</span>
+                                </a>
+                            </li>
+                        {% endif %}
+                    </ul>
+                </section>
+                <p class="copyright">
+                    &copy; {{ site.author }}. Design: {{ site.web_design }}
+                </p>
+            </div>
+            <div>
+                <section>
+                    <h2>Get in touch</h2>
+                    <form method="post" action="#">
+                        <div class="field half first">
+                            <input type="text" name="name" id="name" placeholder="Name"/>
+                        </div>
+                        <div class="field half">
+                            <input type="text" name="email" id="email" placeholder="Email"/>
+                        </div>
+                        <div class="field">
+                            <textarea name="message" id="message" rows="4" placeholder="Message"></textarea>
+                        </div>
+                        <ul class="actions">
+                            <li><input type="submit" value="Send" class="special"/></li>
+                            <li><input type="reset" value="Reset"/></li>
+                        </ul>
+                    </form>
+                </section>
+            </div>
+        </div>
     </footer>
-
-    <!-- Bootstrap core JavaScript -->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Main JavaScript  -->
-    <script src="./main.js"></script>
-    
-    <script type="module" src="/app.js"></script>
-  </body>
-
-</html>
+</div>
