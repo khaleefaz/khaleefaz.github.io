@@ -17,12 +17,12 @@ footer:
  github: ""
 web_design: "AJ"
 social_urls:
-  facebook: "https://www.facebook.com/ramswaroop"
-  twitter: "https://www.twitter.com/ram__patra"
-  instagram: "https://www.instagram.com/ram_patra"
-  dribbble: "https://dribbble.com/rampatra"
-  linkedin: "https://in.linkedin.com/in/ram-patra"
-  github: "https://www.github.com/rampatra"
+  facebook: "https://www.facebook.com/"
+  twitter: "https://www.twitter.com/"
+  instagram: "https://instagram.com/khaleefazzz"
+  dribbble: "https://dribbble.com/"
+  linkedin: "https://in.linkedin.com/in/"
+  github: "https://www.github.com/khaleefaz"
   
 plugins:
   - jekyll-sitemap
